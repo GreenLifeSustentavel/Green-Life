@@ -13,11 +13,11 @@ header{
     padding-bottom: 1%;
 }
 
-nav{
+nav:not(.ftPerfil){
     width: 100%;
     min-height: 50px; /*Apagar esse quando tiver conteudo no header*/
     height: auto;
-    border: 1px solid #029b68;
+    border: none /*#029b68*/;
 }
 
 #input{
@@ -55,6 +55,7 @@ header button{
 #menu{
     margin-left: 20%;
     transform: translateX(10px) translateY(10px);
+    cursor: pointer;
 }
 
 #menu > span{
@@ -127,7 +128,8 @@ header button{
 #divMenu.ativado{
     background: rgba(2, 155, 104, 0.5);
     width: 100%;
-    height: 70vh;
+    min-height: 70vh;
+    padding-bottom: 10%;
     transition: .2s ease-out;
 }
 
@@ -150,15 +152,74 @@ header button{
 
 /*FIM DO CSS DO FUNDO E DA ANIMAÇÃO DA DIV MENU*/
 
+.ftPerfil{
+    min-height: 4vmax;
+    border: 1px solid gray;
+    padding-top: 1%;
+    padding-right: 5%;
+}
+
+.ftPerfil > img{
+    height: 3vmax;
+    float: right;
+}
+
+#esq{
+    display: inline-block;
+    width: 49%;
+}
+
+#dir{
+    display: inline-block;
+    width: 49%;
+    transform: translateY(-100%);
+}
+
 .divForm{
     background-color: #66cdaa;
-    border: solid 10px #029b68;
+    border: solid 2px #029b68;
     border-radius: 10px;
-    padding: 5%;
-    width: fit-content;
-    height: fit-content;
+    padding: 7%;
+    margin-top: 10%;
+    margin-left: 30%;
+    width: min-content;
+    min-height: 20vw;
+    display: inline-block;
 }
 
 .divForm > form{
     text-align: center;
+}
+
+.divForm > label > span:first-child{
+    font-size: xx-large;
+}
+
+.divForm > label > span:last-of-type{
+    font-size: 1vmax;
+}
+
+.divForm > form > input[type="text"], 
+.divForm > form > input[type="email"], 
+.divForm > form > input[type="password"] {
+    margin-bottom: 10%;
+    height: 3vh;
+    border-radius: 3vh;
+    border: none;
+}
+
+.divForm > form > button{
+    width: 100%;
+    height: 3vh;
+    border: none;
+    border-radius: 3vh;
+    margin-top: 5%;
+    cursor: pointer;
+}
+
+.topicos{
+    width: 20%;
+    height: 100px;
+    list-style-type: circle;
+    display: inline-block;
 }

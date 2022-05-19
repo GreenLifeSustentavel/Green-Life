@@ -4,8 +4,8 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> Nome do site </title>
-        <link rel="stylesheet" media="screen and (min-width: 900px)" href="desktop.css">
+        <title> Green Life </title>
+        <link rel="stylesheet" media="screen and (min-width: 700px) and (orientation:landscape)" href="desktop.css">
         <!-- <link rel="icon" href="#"> -->
     </head>
 
@@ -30,14 +30,36 @@
             <div id="principal" class="blc">
             </div>
             <div id="divMenu" class="rem">
-                <div class="divForm">
-                    <form>
-                        <input type="text" id="nome" name="nome" placeholder="Nome..." required> <br>
-                        <input type="email" id="email" name="email" placeholder="Email..." required> <br>
-                        <input type="password" id="senha" name="senha" placeholder="Senha..." required> <br>
-                        <button onclick="envForm()">Enviar</button>
-                    </form>
-                </div>
+                <nav class="ftPerfil">
+                    <img src="/img/ftPerfil.png">
+                </nav>
+                <section>
+                    <div id="esq">
+                        <div class="divForm">
+                            <label for="form"><span> Cadastre-se </span><br><br><span> para receber notícias por email </span><br><br><br></label>
+                            <form id="form">
+                                <input type="text" id="nome" name="nome" placeholder="Nome..." required> <br>
+                                <input type="email" id="email" name="email" placeholder="Email..." required> <br>
+                                <input type="password" id="senha" name="senha" placeholder="Senha..." required> <br>
+                                <button onclick="envForm()">Enviar</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div id="dir">
+                        <div class="topicos">
+                            <ul>
+                                <li>topico 1</li>
+                                <li>topico 2</li>
+                                <li>topico 3</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    
+                </section>
+                
+
             </div>
             
         </main>
