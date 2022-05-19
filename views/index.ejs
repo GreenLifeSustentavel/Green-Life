@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Nome do site </title>
+        <link rel="stylesheet" media="screen and (min-width: 900px)" href="desktop.css">
+        <!-- <link rel="icon" href="#"> -->
+    </head>
+
+    <body>
+
+        <header>
+            <div id="logo">Logo aqui</div>
+            <input type="text" placeholder="Pesquise aqui..." id="input">
+            <button onclick="pesquisa()">🔍</button>
+            <div id="menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </header>
+
+        <nav>
+
+        </nav>
+
+        <main style="width: 100%; height: 200px;" id="main">
+            <div id="principal" class="blc">
+            </div>
+            <div id="divMenu" class="rem">
+                <div class="divForm">
+                    <form>
+                        <input type="text" id="nome" name="nome" placeholder="Nome..." required> <br>
+                        <input type="email" id="email" name="email" placeholder="Email..." required> <br>
+                        <input type="password" id="senha" name="senha" placeholder="Senha..." required> <br>
+                        <button onclick="envForm()">Enviar</button>
+                    </form>
+                </div>
+            </div>
+            
+        </main>
+
+        <!-- Script do axios -->
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+        <script>
+
+            function envForm(){
+                const nome = document.querySelector("#nome");
+                const email = document.querySelector("#email");
+                const senha = document.querySelector("#senha");
+
+                axios.post('http://localhost:7000/usuarios', {
+                    nome: nome.value,
+                    email: email.value,
+                    senha: senha.value
+                }).then(resp => {
+                    console.log(resp.data);
+                }).catch(erro => {
+                    console.log(erro);
+                });
+            }
+
+//==========================================================================================================//
+            //funções responsáveis pelo menu
+
+            const menu = document.querySelector("#menu");
+            const divMenu = document.querySelector("#divMenu");
+            const divPrinc = document.querySelector("#principal");
+
+            menu.addEventListener("click", () => {
+                menu.classList.toggle("active");
+                setTimeout(function(){
+                    divMenu.classList.toggle("rem");
+                },100);
+                setTimeout(function(){
+                    divMenu.classList.toggle("ativado");
+                    divPrinc.classList.toggle("ocult");
+                    divPrinc.classList.toggle("blc");
+                },200);
+                divPrinc.classList.toggle("ocultar");
+            });
+
+            //End das funções responsáveis pelo menu
+
+//==========================================================================================================//
+            //funções responsáveis pela barra de pesquisa
+
+            const pesq = document.querySelector("#input");
+
+            pesq.addEventListener('keydown', function(event) {
+ 
+                var tecla = event.keyCode;
+                if (tecla === 13) {
+                    pesquisa();
+                }
+            })
+
+            function pesquisa(){
+                const input = document.getElementById("input")
+                const div = document.getElementById("main");
+                const br = document.createElement("br");
+                const br2 = document.createElement("br");
+                div.innerHTML = "";
+                axios.get(`http://localhost:5000/produtos/?nome_like=${input.value}`).then(res => {
+                    console.log(res.data[0]); //AJUSTAR PRO NOSSO BANCO DE DADOS // VOU CRIAR UM DB PRA COLOCAR OS TEXTOS DA PAGINA, AI QUANDO A PESSOA PESQUISAR ALGO, EU USO O LIKE E PEGO O DADO, NESSE MESMO DADO TEM Q HAVER UM CAMPO COM O LINK PRA EU COLOCAR E O NOME DE EXIBIÇÃO
+                    var nome = [];
+                    var desc = [];
+                    var preco = [];
+                    var divs = [];
+                    for(let i = 0; i < res.data.length; i++){
+                        divs[i] = document.createElement("div");
+                        nome[i] = document.createTextNode("Lanche: " + res.data[i].nome);
+                        desc[i] = document.createTextNode("\nDescrição: " + res.data[i].descricao);
+                        preco[i] = document.createTextNode("\nPreço: " + res.data[i].preco);
+                        divs[i].appendChild(nome[i]);
+                        divs[i].appendChild(br);
+                        divs[i].appendChild(desc[i]);
+                        divs[i].appendChild(br);
+                        divs[i].appendChild(preco[i]);
+                        divs[i].appendChild(br);
+                        divs[i].appendChild(br2);
+
+                        div.appendChild(divs[i]);
+                    }
+                   
+                   
+                });
+            }
+
+            //End das funções responsáveis pela barra de pesquisa
+//==========================================================================================================//
+            
+        </script>
+
+    </body>
+
+</html>

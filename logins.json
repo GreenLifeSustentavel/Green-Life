@@ -1,0 +1,30 @@
+{
+  "adm": [
+    {
+      "id": 1,
+      "nome": "root",
+      "email": "adm@root.com",
+      "senha": "root@root"
+    }
+  ],
+  "usuarios": [
+    {
+      "id": 1,
+      "nome": "Claudino",
+      "email": "claudinho_gameplays@hotmail.com",
+      "senha": "claudinho123"
+    },
+    {
+      "nome": "Emily",
+      "email": "emily@gmail",
+      "senha": "123456789",
+      "id": 2
+    },
+    {
+      "nome": "Fabio",
+      "email": "maykfabio10@gmail.com",
+      "senha": "123456789",
+      "id": 3
+    }
+  ]
+}

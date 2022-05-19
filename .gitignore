@@ -1,0 +1,3 @@
+#Aqui deve ignorar o node modules
+
+node_modules/

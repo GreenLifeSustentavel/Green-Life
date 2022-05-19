@@ -1,0 +1,164 @@
+*{
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+}
+
+header{
+    width: 100%;
+    height: auto;
+    background-color: #66cdaa;
+    display: flex;
+    padding-top: 2%;
+    padding-bottom: 1%;
+}
+
+nav{
+    width: 100%;
+    min-height: 50px; /*Apagar esse quando tiver conteudo no header*/
+    height: auto;
+    border: 1px solid #029b68;
+}
+
+#input{
+    margin-left: 20%;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 40px;
+    width: 30%;
+    border: none;
+    border-radius: 10px;
+}
+
+input::placeholder{
+    text-align: center;
+}
+
+#logo{
+    margin-left: 5%;
+    width: 10%; /*ARRUMAR AS MEDIDAS QUANDO COLOCAR A LOGO*/
+    height: 50px;
+    border: 1px solid rgba(120, 120, 120, 0.1);
+}
+
+header button{
+    height: 40px;
+    width: 40px;
+    border: none;
+    border-radius: 50%;
+    background-color: transparent;
+    transform: translateX(-100%);
+}
+
+/*CSS DO MENU*/
+
+#menu{
+    margin-left: 20%;
+    transform: translateX(10px) translateY(10px);
+}
+
+#menu > span{
+    display: block;
+    width: 28px;
+    height: 2px;
+    border-radius: 9999px;
+    background-color: black;
+}
+
+#menu > span:not(:last-child){
+    margin-bottom: 7px;
+}
+
+#menu, #menu > span{
+    transition: all .4s ease-in-out;
+}
+
+#menu.active{
+    transition-delay: 0.8s;
+    transform: rotate(45deg);
+    margin-top: 9px;
+}
+
+#menu.active > span:nth-child(2){
+    width: 0;
+}
+
+#menu.active > span:nth-child(1),
+#menu.active > span:nth-child(3){
+    transition-delay: .4s;
+}
+
+#menu.active > span:nth-child(1){
+    transform: translateY(9px);
+}
+
+#menu.active > span:nth-child(3){
+    transform: translateY(-9px) rotate(90deg);
+}
+/*FIM DO CSS DO MENU*/
+
+/*INICIO DO CSS DO FUNDO E DA ANIMAÇÃO DA DIV MENU*/
+
+#divMenu{
+    background-color: transparent;
+    position: absolute; /*AJUSTAR ESSE ABSOLUTE QUE NAO TA ACOMPANHANDO A RESPONSIVIDADE*/
+    top: 145px;
+    right: 0;
+}
+
+#divMenu.rem > a{
+    opacity: 0;
+    transition: .2s ease-out;
+}
+
+#divMenu.rem{
+    width: 0;
+    height: 0;
+    transition: .2s ease-out;
+}
+
+#divMenu:not(.ativado){
+    overflow: hidden;
+    opacity: 0;
+    width: 0;
+    transition: .2s ease-out;
+}
+
+#divMenu.ativado{
+    background: rgba(2, 155, 104, 0.5);
+    width: 100%;
+    height: 70vh;
+    transition: .2s ease-out;
+}
+
+#divMenu.ativado > a{
+    color: black;
+}
+
+#principal.blc{
+    display: block;
+}
+
+#principal.ocult{
+    display: none;
+}
+
+#principal.ocultar{
+    opacity: 0;
+    transition: .2s ease-out;
+}
+
+/*FIM DO CSS DO FUNDO E DA ANIMAÇÃO DA DIV MENU*/
+
+.divForm{
+    background-color: #66cdaa;
+    border: solid 10px #029b68;
+    border-radius: 10px;
+    padding: 5%;
+    width: fit-content;
+    height: fit-content;
+}
+
+.divForm > form{
+    text-align: center;
+}
