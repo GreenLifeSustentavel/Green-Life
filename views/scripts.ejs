@@ -5,6 +5,7 @@
             const menu = document.querySelector("#menu");
             const divMenu = document.querySelector("#divMenu");
             const divPrinc = document.querySelector("#principal");
+            const footer = document.querySelector("#footer");
 
             menu.addEventListener("click", () => {
                 menu.classList.toggle("active");
@@ -15,8 +16,11 @@
                     divMenu.classList.toggle("ativado");
                     divPrinc.classList.toggle("ocult");
                     divPrinc.classList.toggle("blc");
+                    footer.classList.toggle("ocult");
+                    footer.classList.toggle("blc");
                 },200);
                 divPrinc.classList.toggle("ocultar");
+                footer.classList.toggle("ocultar");
             });
 
             //End das funções responsáveis pelo menu
