@@ -254,7 +254,6 @@ header button{
     display: inline-block;
     width: 45%;
     min-height: 20vw;
-    transform: translateY(-70%);
     position: relative;
     opacity: 1;
     font-size: large;
@@ -280,18 +279,20 @@ header button{
     display: inline-block;
 }
 
-.divForm > form{
-    text-align: center;
-}
-
-.divForm > label > span:first-child{
+.max{
     font-size: xx-large;
     color: white;
 }
 
-.divForm > label > span:last-of-type{
+.min{
     font-size: 1vmax;
     color: white;
+    text-align: left;
+}
+
+.link:hover{
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .divForm > form > input[type="text"], 
@@ -319,12 +320,15 @@ header button{
     list-style-type: circle;
     display: inline-block;
     color: white;
-    margin-bottom: 10%; /*CORRIGIR: QUERO ESPAÇAR MAIS  OS TOPICOS UM DO OUTRO*/
 }
 
 .topicos a{
     text-decoration: none;
     color: white;
+}
+
+.topicos li{
+    padding-top: 10%;
 }
 
 .topicos li > ul{

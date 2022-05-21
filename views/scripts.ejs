@@ -1,3 +1,5 @@
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 <script>
 //==========================================================================================================//
             //funções responsáveis pelo menu
@@ -27,21 +29,60 @@
     
 //==========================================================================================================//
 
-            /*function envForm(){
-                const nome = document.querySelector("#nome");
-                const email = document.querySelector("#email");
-                const senha = document.querySelector("#senha");
+            //funções responsáveis pelo formulario
 
-                axios.post('http://localhost:7000/usuarios', {
-                    nome: nome.value,
-                    email: email.value,
-                    senha: senha.value
-                }).then(resp => {
-                    console.log(resp.data);
+                //funções para ocultar caso ja esteja logado
+
+                const form = document.querySelector("#divForm");
+                const nav = document.querySelector("#nav");
+
+                axios.get(`http://localhost:3000/log`).then(res => {
+                    console.log(form);
+                    if(res.data === true){
+                        alert("teste");
+                        console.log("logado: ", res.data)
+                        form.classList.toggle("ocult");
+                        form.classList.toggle("divForm");
+                    } else {
+                        nav.classList.toggle("ocult");
+                    }
                 }).catch(erro => {
                     console.log(erro);
+                })
+
+                //end das funções de ocultar caso esteja logado
+
+                //funções para mudar cad/log
+
+                const muda = document.querySelector("#muda");
+                const muda2 = document.querySelector("#muda2");
+                const cad = document.querySelector("#cad");
+                const formu = document.querySelector("#form")
+                const log = document.querySelector("#log");
+                const formu2 = document.querySelector("#form2");
+
+                muda.addEventListener("click", () => {
+                    formu.classList.toggle("ocult");
+                    cad.classList.toggle("ocult");
+                    formu2.classList.toggle("ocult");
+                    log.classList.toggle("ocult");
                 });
-            }*/
+
+                muda2.addEventListener("click", () => {
+                    formu.classList.toggle("ocult");
+                    cad.classList.toggle("ocult");
+                    formu2.classList.toggle("ocult");
+                    log.classList.toggle("ocult");
+                });
+
+//==========================================================================================================//
+
+            //funções responsáveis pelo logoff
+
+            function deslog(){
+                console.log("teste")
+                axios.get(`http://localhost:3000/deslog`);
+            }
 
 //==========================================================================================================//
             //funções responsáveis pela barra de pesquisa

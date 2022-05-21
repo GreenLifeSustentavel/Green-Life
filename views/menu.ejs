@@ -1,19 +1,32 @@
 <div id="divMenu" class="rem">
-    <nav class="ftPerfil">
-        <img src="/img/ftPerfil.png">
+    <nav id="nav" class="ftPerfil">
+        <img src="/img/ftPerfil.png" onclick="window.location.href='/perfil'">
     </nav>
     <section>
         <img class="back" src="/img/logo.png">
         <div id="esq">
-            <div class="divForm">
-                <label for="form"><span> Cadastre-se </span><br><br><span> para receber notícias por email </span><br><br><br></label>
+            <div id="divForm" class="divForm">
+
+                <label for="form" id="cad"><span class="max"> Cadastre-se </span><br><br><span class="min"> para receber notícias por email </span><br><br><br></label>
                 <form id="form" action="/newUser" method="post">
                     <input type="text" id="nome" name="nome" placeholder="Nome..." required> <br>
                     <input type="email" id="email" name="email" placeholder="Email..." required> <br>
                     <input type="password" id="senha" name="senha" placeholder="Senha..." required> <br>
-                    <input type="submit" value="Enviar">
-                    <!-- <button onclick="envForm()">Enviar</button> -->
+                    <input type="submit" value="Cadastrar">
+                    <br><br>
+                    <label><span class="min link" id="muda">Já possui cadastro? Faça login</span></label>
                 </form>
+
+                <label for="form2" id="log" class="ocult"><span class="max"> Conecte-se </span><br><br><span class="min"> para acessar suas informações </span><br><br><br></label>
+                <form id="form2" action="/login" method="post" class="ocult">
+                    <input type="email" id="email" name="email" placeholder="Email..." required> <br>
+                    <input type="password" id="senha" name="senha" placeholder="Senha..." required> <br>
+                    <input type="submit" value="Login">
+                    <br><br>
+                    <label><span class="min link" id="muda2">Não possui cadastro? Inscreva-se</span></label>
+                </form>
+                
+                
             </div>
         </div>
 

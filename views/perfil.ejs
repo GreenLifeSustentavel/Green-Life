@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    
+    <%- include("./header.ejs"); %>
+
+        <main id="main">
+            <div id="principal" class="blc">
+                <button onclick="window.location.href='/deslog'"> Deslogar </button>
+            </div>
+            
+            <%- include("./menu.ejs"); %>
+            
+        </main>
+
+        <!-- Script do axios -->
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+        <%- include("./scripts.ejs"); %>
+
+    </body>
+
+</html>
