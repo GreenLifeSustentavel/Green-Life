@@ -29,28 +29,37 @@
     
 //==========================================================================================================//
 
+            
+
+</script>
+
+            <% if (log == true) { %>
+
+                <script>
+
             //funções responsáveis pelo formulario
 
-                //funções para ocultar caso ja esteja logado
+                    //funções para ocultar caso ja esteja logado
 
-                const form = document.querySelector("#divForm");
-                const nav = document.querySelector("#nav");
+                    const form = document.querySelector("#divForm");
 
-                axios.get(`http://localhost:3000/log`).then(res => {
-                    console.log(form);
-                    if(res.data === true){
-                        alert("teste");
-                        console.log("logado: ", res.data)
-                        form.classList.toggle("ocult");
-                        form.classList.toggle("divForm");
-                    } else {
-                        nav.classList.toggle("ocult");
-                    }
-                }).catch(erro => {
-                    console.log(erro);
-                })
+                    form.classList.toggle("ocult");
+                    form.classList.toggle("divForm");
+                    
+                </script>
 
-                //end das funções de ocultar caso esteja logado
+            <% } else { %>
+
+                <script>
+                    const nav = document.querySelector("#nav");
+                    nav.classList.toggle("ocult");
+
+                    //end das funções de ocultar caso esteja logado
+                </script>
+
+            <% } %>
+
+<script>
 
                 //funções para mudar cad/log
 

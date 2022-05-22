@@ -4,6 +4,10 @@
     max-width: 100%;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 header{
     width: 100%;
     height: auto;
@@ -204,6 +208,8 @@ header button{
 .ctr img{
     width: 40%;
     float: right;
+    border-radius: 5vw;
+    margin-left: 1vw;
 }
 
 .ctr > label p{
@@ -231,6 +237,7 @@ header button{
     float: right;
     opacity: 1;
     animation: animate 2s infinite linear;
+    cursor: pointer;
 }
 
 @keyframes animate{
@@ -333,4 +340,83 @@ header button{
 
 .topicos li > ul{
     margin-left: 10%;
+}
+
+.perfilFt{
+    width: 15vw;
+    height: 15vw;
+    border-radius: 15vw;
+    border: #029b68 1px solid;
+    margin-bottom: 10%;
+}
+
+.divPerfil{
+    background-color: rgba(102, 205, 170, 0.5);
+    border: solid 2px #029b68;
+    border-radius: 10px;
+    padding-top: 2%;
+    width: 40%;
+    min-height: 20vw;
+    display: inline-block;
+}
+
+.divPerfil input[type="text"]{
+    margin-bottom: 5%;
+    height: 4vh;
+    border-radius: 3vh;
+    border: 1px #029b68 solid;
+    background-color: transparent;
+    color: rgb(0, 0, 0, 0.5);
+    width: 50%;
+    text-align: center;
+}
+
+.divPerfil input[type="text"]:focus{
+    border: #029b68 5px solid;
+}
+
+.divPerfil input[type="submit"]:not(.nop){
+    width: 50%;
+    height: 4vh;
+    border: none;
+    border-radius: 3vh;
+    cursor: pointer;
+    margin-bottom: 5%;
+}
+
+.divPerfil input[type="submit"]:hover{
+    border: double #029b68 2px;
+}
+
+.divPerfil input[name="apagar"], .divPerfil button[name="deslogar"]{
+    width: 20%;
+    height: 2vw;
+    margin-bottom: 3%;
+    border: none;
+    cursor: pointer;
+}
+
+.divPerfil input[name="apagar"]:hover{
+    color: red;
+    border: double 1px;
+    border-color: red;
+}
+
+.divPerfil button[name="deslogar"]:hover{
+    color: rgba(0, 0, 0, 0.3);
+    border: double 1px;
+    border-color: rgba(0, 0, 0, 0.3);
+}
+
+#ft{
+    position: absolute;
+    border-radius: 50%;
+    width: 15vw;
+    height: 15vw;
+    opacity: 0;
+    cursor: pointer;
+}
+
+hr{
+    margin-bottom: 5%;
 }

@@ -12,7 +12,8 @@
       "id": 1,
       "nome": "Claudino",
       "email": "claudinho_gameplays@hotmail.com",
-      "senha": "claudinho123"
+      "senha": "claudinho123",
+      "image": "ftPerfil.png"
     },
     {
       "nome": "Emily",
@@ -27,22 +28,11 @@
       "id": 3
     },
     {
-      "nome": "a",
+      "nome": "aaaaa",
       "email": "a@a",
       "senha": "a",
-      "id": 4
-    },
-    {
-      "nome": "nome",
-      "email": "namae@namae",
-      "senha": "a",
-      "id": 5
-    },
-    {
-      "nome": "nome",
-      "email": "thy@email.com",
-      "senha": "aa",
-      "id": 6
+      "id": 4,
+      "image": "ee405330927a3297299d.png"
     }
   ]
 }
