@@ -34,7 +34,11 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
+function session(id){
+    axios.get(`http://localhost:7000/usuarios/?id=${id}`).then(resp => {
 
+    });
+}
 
 
 var log = false;
@@ -44,30 +48,47 @@ var senha = "";
 var image = "ftPerfil.png";
 
 app.get("/", function(req, res){
-    res.render("index.ejs", {"log": log, "nome": nome, "email": email, "senha": senha, "image": image});
+    var token = req.query.token;
+    if(token === undefined){
+        res.render("index.ejs", {"nome": nome, "email": email, "senha": senha, "image": image, "token": token});
+    } else {
+        axios.get(`http://localhost:7000/usuarios/?token=${token}`).then(resp => {
+            var dados = resp.data[0];
+            console.log("2: ", dados);
+            if(dados != undefined){
+                res.render("index.ejs", {"nome": dados.nome, "email": dados.email, "senha": dados.senha, "image": dados.image, "token": token});
+            } else {
+                res.render("index.ejs", {"nome": nome, "email": email, "senha": senha, "image": image, "token": token});
+            }
+        })
+    }
+    
 });
 
 app.post("/newUser", function(req, res){
-    nome = req.body.nome;
-    email = req.body.email;
-    senha = req.body.senha;
+    var nwnome = req.body.nome;
+    var nwemail = req.body.email;
+    var nwsenha = req.body.senha;
+    var nwimage = "ftPerfil.png";
+
+    var token = require('crypto')
+		.randomBytes(50)
+		.toString('hex');
 
     axios.post('http://localhost:7000/usuarios', {
-        nome: nome,
-        email: email,
-        senha: senha
+        nome: nwnome,
+        email: nwemail,
+        senha: nwsenha,
+        image: nwimage,
+        token: token
     }).then(resp => {
         console.log(resp.data);
         console.log("==========================================================================================================");
-        log = true;
-        res.redirect("/");
+        var token = resp.data.token;
+        res.redirect(`/?token=${token}`)
     }).catch(erro => {
         console.log(erro);
         console.log("==========================================================================================================");
-        nome = "";
-        email = "";
-        senha = "";
-        image = "ftPerfil.png";
     });
 });
 
@@ -81,19 +102,14 @@ app.post("/login", function(req, res){
         } else {
             console.log(resp.data[0]);
             console.log("==========================================================================================================");
-            log = true;
-            nome = resp.data[0].nome;
-            email = resp.data[0].email;
-            senha = resp.data[0].senha;
-            image = resp.data[0].image;
-            res.redirect("/");
+            var token = resp.data[0].token;
+            res.redirect(`/?token=${token}`);
         }
         
     }).catch(erro => {
         console.log("==========================================================================================================");
         console.log(erro);
         console.log("==========================================================================================================");
-        log = false;
         nome = "";
         email = "";
         senha = "";
@@ -103,12 +119,20 @@ app.post("/login", function(req, res){
 });
 
 app.get("/perfil", function(req, res){
-    if(log === true){
-        res.render("perfil.ejs", {"log": log, "nome": nome, "email": email, "senha": senha, "image": image});
+    var token = req.query.token;
+    if(token != undefined){
+        axios.get(`http://localhost:7000/usuarios/?token=${token}`).then(resp => {
+            var dados = resp.data[0];
+            console.log("Perfil: ", dados);
+            if(dados != undefined){
+                res.render("perfil.ejs", {"nome": dados.nome, "email": dados.email, "senha": dados.senha, "image": dados.image, "token": token});
+            } else {
+                res.send("<html><head></head><body><script>alert(\"Faça login\");window.location.href='/'</script></body></html>");
+            }
+        });
     } else {
         res.send("<html><head></head><body><script>alert(\"Faça login\");window.location.href='/'</script></body></html>");
     }
-    
 });
 
 app.get("/log", function(req, res){
@@ -116,7 +140,6 @@ app.get("/log", function(req, res){
 });
 
 app.get("/deslog", function(req, res){
-    log = false;
     nome = "";
     email = "";
     senha = "";
@@ -125,7 +148,7 @@ app.get("/deslog", function(req, res){
 });
 
 app.post("/delet", function(req, res){
-    axios.get(`http://localhost:7000/usuarios/?email=${req.body.email}`).then(resp => {
+    axios.get(`http://localhost:7000/usuarios/?token=${req.body.token}`).then(resp => {
         var id = resp.data[0].id;
         var imagem = resp.data[0].image;
 
@@ -137,7 +160,6 @@ app.post("/delet", function(req, res){
         }));
 
         axios.delete(`http://localhost:7000/usuarios/${id}`);
-        log = false;
         nome = "";
         email = "";
         senha = "";
@@ -147,7 +169,7 @@ app.post("/delet", function(req, res){
 });
 
 app.post("/update", upload.single('ft'), function(req, res){
-    axios.get(`http://localhost:7000/usuarios/?email=${email}`).then(resp => {
+    axios.get(`http://localhost:7000/usuarios/?token=${req.body.token}`).then(resp => {
         var id = resp.data[0].id;
         console.log(id);
         if(req.file){
@@ -156,10 +178,7 @@ app.post("/update", upload.single('ft'), function(req, res){
                 email: req.body.email,
                 image: req.file.filename
             }).then(resp => {
-                nome = resp.data.nome;
-                email = resp.data.email;
-                senha = resp.data.senha;
-                image = resp.data.image;
+                
             });
         } else {
             axios.patch(`http://localhost:7000/usuarios/${id}`, {
@@ -167,22 +186,44 @@ app.post("/update", upload.single('ft'), function(req, res){
                 email: req.body.email,
                 image: image
             }).then(resp => {
-                nome = resp.data.nome;
-                email = resp.data.email;
-                senha = resp.data.senha;
-                image = resp.data.image;
             });
         }
     });
-    res.send("<html><head></head><body><script>alert(\"Alterado\");window.location.href='/perfil'</script></body></html>");
+    res.send(`<html><head></head><body><script>alert("Alterado");window.location.href="/perfil/?token=${req.body.token}"</script></body></html>`);
 });
 
 app.get("/vidaSustentavel", function(req, res){
-    res.render("vidaSustentavel.ejs", {"log": log, "nome": nome, "email": email, "senha": senha, "image": image});
+    var token = req.query.token;
+    if(token === undefined){
+        res.render("vidaSustentavel.ejs", {"nome": nome, "email": email, "senha": senha, "image": image, "token": token});
+    } else {
+        axios.get(`http://localhost:7000/usuarios/?token=${token}`).then(resp => {
+            var dados = resp.data[0];
+            console.log("2: ", dados);
+            if(dados != undefined){
+                res.render("vidaSustentavel.ejs", {"nome": dados.nome, "email": dados.email, "senha": dados.senha, "image": dados.image, "token": token});
+            } else {
+                res.render("vidaSustentavel.ejs", {"nome": nome, "email": email, "senha": senha, "image": image, "token": token});
+            }
+        })
+    }
 });
 
 app.get("/impactos", function(req, res){
-    res.render("impactos.ejs", {"log": log, "nome": nome, "email": email, "senha": senha, "image": image});
+    var token = req.query.token;
+    if(token === undefined){
+        res.render("impactos.ejs", {"nome": nome, "email": email, "senha": senha, "image": image, "token": token});
+    } else {
+        axios.get(`http://localhost:7000/usuarios/?token=${token}`).then(resp => {
+            var dados = resp.data[0];
+            console.log("2: ", dados);
+            if(dados != undefined){
+                res.render("impactos.ejs", {"nome": dados.nome, "email": dados.email, "senha": dados.senha, "image": dados.image, "token": token});
+            } else {
+                res.render("impactos.ejs", {"nome": nome, "email": email, "senha": senha, "image": image, "token": token});
+            }
+        })
+    }
 });
 
 app.listen(3000);

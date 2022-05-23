@@ -12,12 +12,13 @@
                         <img src="/fts/<%=image%>" name="foto" class="perfilFt" accept = "image/png, image/jpeg"/> <br>
                         <input type="text" name="nome" value="<%= nome %>">
                         <input type="text" name="email" value="<%= email %>">
+                        <input type="hidden" name="token" value="<%=token%>">
                         <input type="submit" value="Alterar dados">
                     </form>
                     
                     <hr>
                     <form action="/delet" method="POST">
-                        <input type="hidden" name="email" value="<%=email%>">
+                        <input type="hidden" name="token" value="<%=token%>">
                         <input type="submit" name="apagar" class="nop" value="Apagar conta">
                     </form><br>
                     <button name="deslogar" class="nop" onclick="window.location.href='/deslog'"> Deslogar </button><br><br>

@@ -203,6 +203,9 @@ header button{
 .ctr label{
     margin-right: 10%;
     margin-left: 10%;
+    padding: 1%;
+    border-left: #029b68 1px solid;
+    border-right: #029b68 1px solid;
 }
 
 .ctr img{
@@ -389,7 +392,7 @@ header button{
 }
 
 .divPerfil input[name="apagar"], .divPerfil button[name="deslogar"]{
-    width: 20%;
+    min-width: 20%;
     height: 2vw;
     margin-bottom: 3%;
     border: none;
