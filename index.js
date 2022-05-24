@@ -226,4 +226,55 @@ app.get("/impactos", function(req, res){
     }
 });
 
+app.get("/sustentabilidade", function(req, res){
+    var token = req.query.token;
+    if(token === undefined){
+        res.render("sustentabilidade.ejs", {"nome": nome, "email": email, "senha": senha, "image": image, "token": token});
+    } else {
+        axios.get(`http://localhost:7000/usuarios/?token=${token}`).then(resp => {
+            var dados = resp.data[0];
+            console.log("2: ", dados);
+            if(dados != undefined){
+                res.render("sustentabilidade.ejs", {"nome": dados.nome, "email": dados.email, "senha": dados.senha, "image": dados.image, "token": token});
+            } else {
+                res.render("sustentabilidade.ejs", {"nome": nome, "email": email, "senha": senha, "image": image, "token": token});
+            }
+        })
+    }
+});
+
+app.get("/ds", function(req, res){
+    var token = req.query.token;
+    if(token === undefined){
+        res.render("dsSustentavel.ejs", {"nome": nome, "email": email, "senha": senha, "image": image, "token": token});
+    } else {
+        axios.get(`http://localhost:7000/usuarios/?token=${token}`).then(resp => {
+            var dados = resp.data[0];
+            console.log("2: ", dados);
+            if(dados != undefined){
+                res.render("dsSustentavel.ejs", {"nome": dados.nome, "email": dados.email, "senha": dados.senha, "image": dados.image, "token": token});
+            } else {
+                res.render("dsSustentavel.ejs", {"nome": nome, "email": email, "senha": senha, "image": image, "token": token});
+            }
+        })
+    }
+});
+
+app.get("/TIverde", function(req, res){
+    var token = req.query.token;
+    if(token === undefined){
+        res.render("TIverde.ejs", {"nome": nome, "email": email, "senha": senha, "image": image, "token": token});
+    } else {
+        axios.get(`http://localhost:7000/usuarios/?token=${token}`).then(resp => {
+            var dados = resp.data[0];
+            console.log("2: ", dados);
+            if(dados != undefined){
+                res.render("TIverde.ejs", {"nome": dados.nome, "email": dados.email, "senha": dados.senha, "image": dados.image, "token": token});
+            } else {
+                res.render("TIverde.ejs", {"nome": nome, "email": email, "senha": senha, "image": image, "token": token});
+            }
+        })
+    }
+});
+
 app.listen(3000);

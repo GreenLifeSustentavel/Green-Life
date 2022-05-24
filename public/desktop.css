@@ -226,6 +226,11 @@ header button{
     font-size: 1.5vw;
 }
 
+.ctr ol > li{
+    margin-left: 10%;
+    font-size: 1.5vw;
+}
+
 /*FIM DO CSS DO FUNDO E DA ANIMAÇÃO DA DIV MENU*/
 
 .ftPerfil{
@@ -256,19 +261,21 @@ header button{
 #esq{
     display: inline-block;
     width: 49%;
-    position: relative;
+    position: absolute;
     z-index: 2;
 }
 
 #dir{
     display: inline-block;
     width: 45%;
-    min-height: 20vw;
-    position: relative;
+    min-height: 30vw;
+    position: absolute;
     opacity: 1;
     font-size: large;
     font-weight: bolder;
     padding-left: 5%;
+    margin-top: 10%;
+    left: 40%;
 }
 
 .back{
@@ -283,7 +290,7 @@ header button{
     border-radius: 10px;
     padding: 7%;
     margin-top: 20%;
-    margin-left: 20%;
+    margin-left: 10%;
     width: 40%;
     min-height: 20vw;
     display: inline-block;
@@ -325,10 +332,10 @@ header button{
 }
 
 .topicos{
-    width: 45%;
+    width: 60%;
     height: 100px;
     list-style-type: circle;
-    display: inline-block;
+    display: block;
     color: white;
 }
 
@@ -342,8 +349,17 @@ header button{
 }
 
 .topicos li > ul{
-    margin-left: 10%;
+    margin-left: 20%;
 }
+
+.topicos ul:nth-child(odd){
+    right: 0;
+}
+
+.lf{
+    display: inline-block;
+}
+
 
 .perfilFt{
     width: 15vw;
@@ -422,4 +438,42 @@ header button{
 
 hr{
     margin-bottom: 5%;
+}
+
+/*carrossel*/
+.logos{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap
+    }
+    
+    .logos .logo{
+    height: 150px;
+    background-size: cover !important
+    }
+    
+    .logos .logo img {
+    height: 100px;
+    width: 150px
+    }
+
+.imgs{
+    height: 30vw;
+    width: 100%;
+    border-radius: 1vw;
+    position: absolute;
+    left: 0;
+    
+}
+
+.ts{
+    transition: .5s ease;
+}
+
+.dir{
+    width: 0;
+    height: 30vw;
+    transition: .5s ease;
 }
