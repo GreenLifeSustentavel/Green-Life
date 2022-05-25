@@ -8,6 +8,7 @@
             const divMenu = document.querySelector("#divMenu");
             const divPrinc = document.querySelector("#principal");
             const footer = document.querySelector("#footer");
+            const icons = document.querySelector(".icons")
 
             menu.addEventListener("click", () => {
                 menu.classList.toggle("active");
@@ -20,6 +21,7 @@
                     divPrinc.classList.toggle("blc");
                     footer.classList.toggle("ocult");
                     footer.classList.toggle("blc");
+                    icons.classList.toggle("ocult");
                 },200);
                 divPrinc.classList.toggle("ocultar");
                 footer.classList.toggle("ocultar");

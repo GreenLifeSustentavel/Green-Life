@@ -96,27 +96,43 @@ app.post("/login", function(req, res){
     var emailLogin = req.body.email;
     var senhaLogin = req.body.senha;
 
-    axios.get(`http://localhost:7000/usuarios/?email=${emailLogin}&senha=${senhaLogin}`).then(resp => {
-        if(resp.data === undefined){
+    if(emailLogin === "adm@root.com" && senhaLogin === "root@root"){
+        res.redirect("/adm/?token=e1aa28844ce0b036eb2a31htrgrrgroglmvbrçlgmǵma02cb2223c34048b2b48ac20480a253f82167aa3d31142cbb9932a09dd5248");
+    } else {
+        axios.get(`http://localhost:7000/usuarios/?email=${emailLogin}&senha=${senhaLogin}`).then(resp => {
+            if(resp.data === undefined){
+                
+            } else {
+                console.log(resp.data[0]);
+                console.log("==========================================================================================================");
+                var token = resp.data[0].token;
+                res.redirect(`/?token=${token}`);
+            }
             
-        } else {
-            console.log(resp.data[0]);
+        }).catch(erro => {
             console.log("==========================================================================================================");
-            var token = resp.data[0].token;
-            res.redirect(`/?token=${token}`);
-        }
-        
-    }).catch(erro => {
-        console.log("==========================================================================================================");
-        console.log(erro);
-        console.log("==========================================================================================================");
-        nome = "";
-        email = "";
-        senha = "";
-        image = "ftPerfil.png";
-        res.send("<html><head></head><body><script>alert(\"Credenciais incorretas\");window.open(document.referrer,'_self')</script></body></html>");
-    })
+            console.log(erro);
+            console.log("==========================================================================================================");
+            nome = "";
+            email = "";
+            senha = "";
+            image = "ftPerfil.png";
+            res.send("<html><head></head><body><script>alert(\"Credenciais incorretas\");window.open(document.referrer,'_self')</script></body></html>");
+        })
+    }
+
 });
+
+app.get("/adm", function(req, res){
+    token = req.query.token;
+    if(token === "e1aa28844ce0b036eb2a31htrgrrgroglmvbrçlgmǵma02cb2223c34048b2b48ac20480a253f82167aa3d31142cbb9932a09dd5248"){
+        axios.get("http://localhost:7000/usuarios").then(resp => {
+            var dados = resp.data;
+            console.log(dados);
+            res.render("adm.ejs", {"dados": dados, "nome": "adm", "email": email, "senha": senha, "image": image, "token": token});
+        })
+    }
+})
 
 app.get("/perfil", function(req, res){
     var token = req.query.token;
@@ -148,24 +164,52 @@ app.get("/deslog", function(req, res){
 });
 
 app.post("/delet", function(req, res){
-    axios.get(`http://localhost:7000/usuarios/?token=${req.body.token}`).then(resp => {
-        var id = resp.data[0].id;
-        var imagem = resp.data[0].image;
+    if(req.body.adm === "e1aa28844ce0b036eb2a31htrgrrgroglmvbrçlgmǵma02cb2223c34048b2b48ac20480a253f82167aa3d31142cbb9932a09dd5248"){
+        axios.get(`http://localhost:7000/usuarios/?token=${req.body.token}`).then(resp => {
+            var id = resp.data[0].id;
+            var imagem = resp.data[0].image;
 
-        fs.unlink(`./public/fts/${imagem}`, (err => {
-            if (err) console.log(err);
-            else {
-              console.log(`\nDeleted file: ${imagem}`);
+            if(imagem === "ftPerfil.png"){
+
+            } else {
+                fs.unlink(`./public/fts/${imagem}`, (err => {
+                    if (err) console.log(err);
+                    else {
+                    console.log(`\nDeleted file: ${imagem}`);
+                    }
+                }));
             }
-        }));
 
-        axios.delete(`http://localhost:7000/usuarios/${id}`);
-        nome = "";
-        email = "";
-        senha = "";
-        image = "ftPerfil.png";
-        res.send("<html><head></head><body><script>alert(\"Perfil apagado\");window.location.href='/'</script></body></html>");
-    });
+            
+
+            axios.delete(`http://localhost:7000/usuarios/${id}`);
+            nome = "";
+            email = "";
+            senha = "";
+            image = "ftPerfil.png";
+            res.send("<html><head></head><body><script>alert(\"Perfil apagado\");window.location.href='/adm/?token=e1aa28844ce0b036eb2a31htrgrrgroglmvbrçlgmǵma02cb2223c34048b2b48ac20480a253f82167aa3d31142cbb9932a09dd5248'</script></body></html>");
+        });
+    } else {
+        axios.get(`http://localhost:7000/usuarios/?token=${req.body.token}`).then(resp => {
+            var id = resp.data[0].id;
+            var imagem = resp.data[0].image;
+
+            fs.unlink(`./public/fts/${imagem}`, (err => {
+                if (err) console.log(err);
+                else {
+                console.log(`\nDeleted file: ${imagem}`);
+                }
+            }));
+
+            axios.delete(`http://localhost:7000/usuarios/${id}`);
+            nome = "";
+            email = "";
+            senha = "";
+            image = "ftPerfil.png";
+            res.send("<html><head></head><body><script>alert(\"Perfil apagado\");window.location.href='/'</script></body></html>");
+        });
+    }
+    
 });
 
 app.post("/update", upload.single('ft'), function(req, res){
@@ -177,15 +221,15 @@ app.post("/update", upload.single('ft'), function(req, res){
                 nome: req.body.nome,
                 email: req.body.email,
                 image: req.file.filename
-            }).then(resp => {
+            }).then(respo => {
                 
             });
         } else {
             axios.patch(`http://localhost:7000/usuarios/${id}`, {
                 nome: req.body.nome,
                 email: req.body.email,
-                image: image
-            }).then(resp => {
+                image: resp.data[0].image
+            }).then(respo => {
             });
         }
     });
@@ -272,6 +316,23 @@ app.get("/TIverde", function(req, res){
                 res.render("TIverde.ejs", {"nome": dados.nome, "email": dados.email, "senha": dados.senha, "image": dados.image, "token": token});
             } else {
                 res.render("TIverde.ejs", {"nome": nome, "email": email, "senha": senha, "image": image, "token": token});
+            }
+        })
+    }
+});
+
+app.get("/qs", function(req, res){
+    var token = req.query.token;
+    if(token === undefined){
+        res.render("quemSomos.ejs", {"nome": nome, "email": email, "senha": senha, "image": image, "token": token});
+    } else {
+        axios.get(`http://localhost:7000/usuarios/?token=${token}`).then(resp => {
+            var dados = resp.data[0];
+            console.log("2: ", dados);
+            if(dados != undefined){
+                res.render("quemSomos.ejs", {"nome": dados.nome, "email": dados.email, "senha": dados.senha, "image": dados.image, "token": token});
+            } else {
+                res.render("quemSomos.ejs", {"nome": nome, "email": email, "senha": senha, "image": image, "token": token});
             }
         })
     }

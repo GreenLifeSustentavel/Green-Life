@@ -3,8 +3,10 @@
     
     <%- include("./header.ejs"); %>
 
-        <main style="width: 100%; height: 200px;" id="main">
+        <main id="main">
             <div id="principal" class="blc cent">
+
+                <img class="banner" src="/img/slide1.jpg" alt="[imagem]index">
                 
             </div>
 
@@ -12,10 +14,24 @@
             <%- include("./menu.ejs"); %>
             
         </main>
+
+    </body>
+
+        <article>
+            <div class="icons">
+                <img src="/img/inst.jpeg" onclick="window.location.href='https:\/\/www.instagram.com/'" alt="instagram">
+                <img src="/img/email.png" onclick="window.location.href='https:\/\/mailto:greenlifesustentavel@gmail.com'" alt="email">
+            </div>
+        </article>
+
+        <footer class="blc" id="footer"> 
+            <div id="back-wave">
+                
+            </div>
+            <label>Green Life</label>
+        </footer>
         
 
         <%- include("./scripts.ejs"); %>
-
-    </body>
 
 </html>

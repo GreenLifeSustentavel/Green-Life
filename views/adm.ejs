@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    
+    <%- include("./header.ejs"); %>
+
+        <main id="main">
+            <div class="cent">
+
+                <% console.log(dados[0]); %>
+
+                <table border="1" id="tabadm">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Senha</th>
+                        <th>Deletar</th>
+                    </tr>
+                    <% for(let i = 0; i < dados.length; i++) { %>
+                    <tr>
+                        <td><%=dados[i].id%></td>
+                        <td><%=dados[i].nome%></td>
+                        <td><%=dados[i].email%></td>
+                        <td><%=dados[i].senha%></td>
+                        <td>
+                            <form action="/delet" method="POST">
+                                <input type="hidden" value="<%=dados[i].token%>" name="token">
+                                <input type="hidden" value="e1aa28844ce0b036eb2a31htrgrrgroglmvbrçlgmǵma02cb2223c34048b2b48ac20480a253f82167aa3d31142cbb9932a09dd5248" name="adm">
+                                <input type="submit" style="cursor: pointer;" value="Deletar">
+                            </form>
+                            
+                        </td>
+                    </tr>
+
+                    <% } %>
+                </table>
+                
+                <button onclick="window.location.href='/'" class="btnadm">Logoff</button>
+
+            </div>
+
+            
+            <%- include("./menu.ejs"); %>
+            
+        </main>
+
+    </body>        
+
+
+</html>

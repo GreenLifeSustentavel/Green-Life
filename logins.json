@@ -4,7 +4,8 @@
       "id": 1,
       "nome": "root",
       "email": "adm@root.com",
-      "senha": "root@root"
+      "senha": "root@root",
+      "token": "e1aa28844ce0b036eb2a31htrgrrgroglmvbrçlgmǵma02cb2223c34048b2b48ac20480a253f82167aa3d31142cbb9932a09dd5248"
     }
   ],
   "usuarios": [
@@ -38,7 +39,7 @@
       "nome": "Nome",
       "email": "namae@namae",
       "senha": "n",
-      "image": "3df9ba464b31977093b7.png",
+      "image": "fd6855d35582d18cb327.png",
       "token": "e1aa28844ce0b036eb2a31fdea02cb2223c34048b2b48aaff1b098b35a6c20480a253f82167aa3d31142cbb9932a09dd5248",
       "id": 5
     }

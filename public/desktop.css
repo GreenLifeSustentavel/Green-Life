@@ -10,11 +10,11 @@ html{
 
 header{
     width: 100%;
-    height: auto;
+    height: 4vw;
     background-color: #66cdaa;
     display: flex;
-    padding-top: 2%;
-    padding-bottom: 1%;
+    padding-top: 2vw;
+    padding-bottom: 1.5vw;
 }
 
 footer{
@@ -22,10 +22,7 @@ footer{
     font-size: large;
     background-color: #66cdaa;
     width: 100%;
-    padding-top: 2%;
-    padding-bottom: 2%;
-    margin-top: 5%;
-    min-height: 50px;
+    min-height: 20vw;
 }
 
 h1{
@@ -42,11 +39,16 @@ h2{
     margin-bottom: 5%;
 }
 
+a:hover{
+    text-decoration: underline;
+}
+
 nav:not(.ftPerfil){
     width: 100%;
-    min-height: 50px; /*Apagar esse quando tiver conteudo no header*/
-    height: auto;
-    border: none /*#029b68*/;
+    height: 4vw;
+    border: 1px solid #029b68;
+    border-right: none;
+    border-left: none;
 }
 
 #input{
@@ -78,6 +80,25 @@ header button{
     border-radius: 50%;
     background-color: transparent;
     transform: translateX(-100%);
+}
+
+.nav_links{
+    height: 2vw;
+    background-color: rgba(102, 205, 170, 0.9);
+    border-radius: 2vw;
+    width: 10%;
+    text-align: center;
+    padding-top: 1vw;
+    margin-left: 12%;
+    margin-top: 0.5vw;
+    font-size: 1vw;
+    display: inline-block;
+}
+
+.nav_links a{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 /*CSS DO MENU*/
@@ -133,7 +154,7 @@ header button{
 #divMenu{
     background-color: transparent;
     position: absolute; /*AJUSTAR ESSE ABSOLUTE QUE NAO TA ACOMPANHANDO A RESPONSIVIDADE*/
-    top: 145px;
+    top: 11.5vw;
     right: 0;
 }
 
@@ -170,6 +191,7 @@ header button{
 #main{
     min-height: 200px;
     width: 100%;
+    margin-top: 3vw;
 }
 
 #principal > .banner{
@@ -194,7 +216,7 @@ header button{
     transition: .2s ease-out;
 }
 
-.ctr{
+.ctr:not(.exc){
     display: flex;
     width: 100%;
     text-align: left;
@@ -208,11 +230,19 @@ header button{
     border-right: #029b68 1px solid;
 }
 
-.ctr img{
+.ctr img:not(.exc){
     width: 40%;
     float: right;
     border-radius: 5vw;
     margin-left: 1vw;
+}
+
+.exc{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    margin-left: 20%;
 }
 
 .ctr > label p{
@@ -291,7 +321,7 @@ header button{
     padding: 7%;
     margin-top: 20%;
     margin-left: 10%;
-    width: 40%;
+    width: 45%;
     min-height: 20vw;
     display: inline-block;
 }
@@ -337,11 +367,16 @@ header button{
     list-style-type: circle;
     display: block;
     color: white;
+    padding-left: 10%;
 }
 
 .topicos a{
     text-decoration: none;
     color: white;
+}
+
+.topicos a:hover{
+    text-decoration: underline;
 }
 
 .topicos li{
@@ -476,4 +511,39 @@ hr{
     width: 0;
     height: 30vw;
     transition: .5s ease;
+}
+
+#back-wave{
+    background-color: white;
+    width: 100%;
+    height: 9vw;
+    border-bottom-left-radius: 70%;
+    border-bottom-right-radius: 70%;
+    margin-bottom: 5%;
+}
+
+footer > label{
+    font-size: xx-large;
+}
+
+.icons{
+    position: fixed;
+    right: 0;
+    top: 20vw;
+    width: 3vw;
+    height: 3vw;
+    z-index: 100;
+    cursor: pointer;
+}
+
+#tabadm{
+    width: 60%;
+    margin-left: 20%;
+}
+
+.btnadm{
+    width: 4%;
+    font-size: 1vw;
+    margin-left: 48%;
+    margin-top: 5%;
 }
