@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    
+    <%- include("./header.ejs"); %>
+
+        <main id="main">
+            <div id="principal" class="cent">
+
+                <div id="divForm" class="divForm">
+
+                    <label for="form" id="cad"><span class="max"> Quer receber dicas de como ter uma vida sustentável?</span><br><br><br></label>
+                    <form id="form" action="/newUser" method="post">
+                        <input type="text" id="nome" name="nome" placeholder="Nome..." required> <br>
+                        <input type="email" id="email" name="email" placeholder="Email..." required> <br>
+                        <input type="password" id="senha" name="senha" placeholder="Senha..." required> <br>
+                        <input type="submit" value="Cadastrar">
+                        <br><br>
+                        <label><span class="min link" id="muda">Já possui cadastro? Faça login</span></label>
+                    </form>
+    
+                    <label for="form2" id="log" class="ocult"><span class="max"> Conecte-se </span><br><br><span class="min"> Bem vindo de volta ;-) </span><br><br><br></label>
+                    <form id="form2" action="/login" method="post" class="ocult">
+                        <input type="email" id="email" name="email" placeholder="Email..." required> <br>
+                        <input type="password" id="senha" name="senha" placeholder="Senha..." required> <br>
+                        <input type="submit" value="Login">
+                        <br><br>
+                        <label><span class="min link" id="muda2">Não possui cadastro? Inscreva-se</span></label>
+                    </form>
+                    
+                    
+                </div>
+
+            </div>
+
+            
+            <%- include("./menu.ejs"); %>
+            
+        </main>
+
+    </body>        
+
+    <footer class="blc" id="footer"> 
+        <div id="back-wave">
+            
+        </div>
+        <label>Green Life<br><br>
+            <label class="foot_mob">
+                <span><a href="/qs?token=<%=token%>">Quem Somos?</a></span><br>
+                <span><a href="/qs?token=<%=token%>#mis">Missão</a></span>
+                <span><a href="/qs?token=<%=token%>#vis">Visão</a></span>
+                <span><a href="/qs?token=<%=token%>#val">Valores</a></span>
+            </label>
+        </label>
+    </footer>
+
+    <%- include("./scripts.ejs"); %>
+
+</html>

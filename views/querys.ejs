@@ -5,14 +5,16 @@
             <div id="principal" class="blc cent">
                 
                 <section class="cont">
+
                     <% for (let i = 0; i < dados.length; i++) { %>
-                        <div class="qry" onclick="window.locaation.href=''">
+                        <div class="qry" onclick="window.location.href='<%=dados[i].link%>?token=<%=token%><%=dados[i].trecho%>'">
                             <label>
                                 <h3><%=dados[i].titulo%></h3><br>
                                 <span><%=dados[i].conteudo%></span>
                             </label>
                         </div><br><br>
                     <% } %>
+                
                 </section>
             </div>
             <%- include("./menu.ejs"); %>
@@ -29,7 +31,14 @@
         <div id="back-wave">
             
         </div>
-        <label>Green Life</label>
+        <label>Green Life<br><br>
+            <label class="foot_mob">
+                <span><a href="/qs?token=<%=token%>">Quem Somos?</a></span><br>
+                <span><a href="/qs?token=<%=token%>#mis">Missão</a></span>
+                <span><a href="/qs?token=<%=token%>#vis">Visão</a></span>
+                <span><a href="/qs?token=<%=token%>#val">Valores</a></span>
+            </label>
+        </label>
     </footer>
     <%- include("./scripts.ejs"); %>
 </html>
