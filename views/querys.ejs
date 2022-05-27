@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <%- include("./header.ejs"); %>
+        <main id="main">
+            <div id="principal" class="blc cent">
+                
+                <section class="cont">
+                    <% for (let i = 0; i < dados.length; i++) { %>
+                        <div class="qry" onclick="window.locaation.href=''">
+                            <label>
+                                <h3><%=dados[i].titulo%></h3><br>
+                                <span><%=dados[i].conteudo%></span>
+                            </label>
+                        </div><br><br>
+                    <% } %>
+                </section>
+            </div>
+            <%- include("./menu.ejs"); %>
+        </main>
+    </body>
+
+    <article>
+        <div class="icons">
+            <img src="/img/inst.jpeg" onclick="window.location.href='https:\/\/www.instagram.com/'" alt="instagram">
+            <img src="/img/email.png" onclick="window.location.href='https:\/\/mailto:greenlifesustentavel@gmail.com'" alt="email">
+        </div>
+    </article>
+    <footer class="blc" id="footer"> 
+        <div id="back-wave">
+            
+        </div>
+        <label>Green Life</label>
+    </footer>
+    <%- include("./scripts.ejs"); %>
+</html>

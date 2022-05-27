@@ -16,8 +16,11 @@
 
     <header>
         <img src="/img/logo.png" onclick="window.location.href='/?token=<%=token%>'" alt="Logo" id="logo"></img>
-        <input type="text" placeholder="Pesquise aqui..." id="input">
-        <button onclick="pesquisa()">🔍</button>
+        <form action="/query?token=<%=token%>" method="get">
+            <input type="text" placeholder="Pesquise aqui..." name="q" id="input" required>
+            <input type="hidden" name="token" value="<%=token%>">
+            <input type="submit" value="🔍">
+        </form>
         <div id="menu">
             <span></span>
             <span></span>
@@ -26,16 +29,16 @@
     </header>
 
     <nav>
-        <div class="nav_links">
+        <div class="nav_links" onclick="window.location.href='/qs?token=<%=token%>'">
             <a href="/qs?token=<%=token%>">Quem Somos?</a>
         </div>
-        <div class="nav_links">
+        <div class="nav_links" onclick="window.location.href='/qs?token=<%=token%>#mis'">
             <a href="/qs?token=<%=token%>#mis">Missão</a>
         </div>
-        <div class="nav_links">
+        <div class="nav_links" onclick="window.location.href='/qs?token=<%=token%>#vis'">
             <a href="/qs?token=<%=token%>#vis">Visão</a>
         </div>
-        <div class="nav_links">
+        <div class="nav_links" onclick="window.location.href='/qs?token=<%=token%>#val'">
             <a href="/qs?token=<%=token%>#val">Valores</a>
         </div>
     </nav>

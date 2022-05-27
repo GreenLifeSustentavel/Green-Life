@@ -51,14 +51,20 @@ nav:not(.ftPerfil){
     border-left: none;
 }
 
-#input{
+header > form{
+    width: 40%;
     margin-left: 20%;
+    display: inline-block;
+}
+
+#input{
     padding-left: 10px;
     padding-right: 10px;
     height: 40px;
-    width: 30%;
+    width: 70%;
     border: none;
     border-radius: 10px;
+    display: inline-block;
 }
 
 input::placeholder{
@@ -73,13 +79,14 @@ input::placeholder{
     cursor: pointer;
 }
 
-header button{
+header input[type="submit"]{
     height: 40px;
     width: 40px;
     border: none;
     border-radius: 50%;
     background-color: transparent;
     transform: translateX(-100%);
+    display: inline-block;
 }
 
 .nav_links{
@@ -93,6 +100,7 @@ header button{
     margin-top: 0.5vw;
     font-size: 1vw;
     display: inline-block;
+    cursor: pointer;
 }
 
 .nav_links a{
@@ -104,7 +112,7 @@ header button{
 /*CSS DO MENU*/
 
 #menu{
-    margin-left: 20%;
+    margin-left: 10%;
     transform: translateX(10px) translateY(10px);
     cursor: pointer;
 }
@@ -546,4 +554,34 @@ footer > label{
     font-size: 1vw;
     margin-left: 48%;
     margin-top: 5%;
+}
+
+.cont{
+    width: 100%;
+    text-align: left;
+}
+
+.qry{
+    width: 60%;
+    margin-left: 20%;
+    background-color: rgba(102, 205, 170, 0.7);
+    min-height: 5vw;
+    padding: 2vw;
+    border-radius: 2vw;
+    color: rgb(102, 102, 102);
+}
+
+.qry:hover{
+    background-color: rgba(102, 205, 170, 0.9);
+    cursor: pointer;
+    color: rgb(65, 65, 65);
+}
+
+.qry > label:hover{
+    color: rgb(65, 65, 65);
+    cursor: pointer;
+}
+
+h3{
+    color: rgba(0, 0, 0, 0.8);
 }
