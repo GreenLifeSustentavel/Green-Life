@@ -23,7 +23,7 @@ footer{
     background-color: #66cdaa;
     width: 100%;
     min-height: 20vw;
-    padding-bottom: 5%;
+    padding-bottom: 10%;
 }
 
 h1{
@@ -272,14 +272,13 @@ header input[type="submit"]{
 /*FIM DO CSS DO FUNDO E DA ANIMAÇÃO DA DIV MENU*/
 
 .ftPerfil{
-    min-height: 4vmax;
-    padding-top: 1%;
+    height: 10vmax;
+    padding-top: 2%;
     padding-right: 5%;
     background-color: rgba(255, 255, 255, 0.8);
 }
 
 .ftPerfil > img{
-    height: 3vmax;
     float: right;
     opacity: 1;
     animation: animate 2s infinite linear;
@@ -288,10 +287,10 @@ header input[type="submit"]{
 
 @keyframes animate{
     0%, 100%{
-        height: 3vmax;
+        height: 8vmax;
     }
     50%{
-        height: 4vmax;
+        height: 10vmax;
         transform: translate(0.5vmax, -0.5vmax);
     }
 }
@@ -311,7 +310,7 @@ header input[type="submit"]{
     opacity: 1;
     font-size: 5vw;
     font-weight: bolder;
-    top: 0;
+    top: 10vmax;
     left: 0;
 }
 
@@ -322,13 +321,15 @@ header input[type="submit"]{
 }
 
 .divForm{
-    background-color: rgba(102, 205, 170, 0.5);
+    background-color: rgba(2, 155, 104, 0.5);
     border: solid 2px #029b68;
     border-radius: 10px;
     padding: 7%;
+    padding-bottom: 12%;
     margin-left: 5%;
+    margin-top: 5%;
     width: 75%;
-    min-height: 20vw;
+    min-height: 300px;
     display: inline-block;
 }
 
@@ -338,7 +339,7 @@ header input[type="submit"]{
 }
 
 .min{
-    font-size: 2vmax;
+    font-size: small;
     color: white;
     text-align: left;
 }
@@ -352,7 +353,7 @@ header input[type="submit"]{
 .divForm > form > input[type="email"], 
 .divForm > form > input[type="password"] {
     margin-bottom: 10%;
-    height: 4vh;
+    height: 40px;
     border-radius: 3vh;
     border: none;
     width: 100%;
@@ -360,7 +361,7 @@ header input[type="submit"]{
 
 .divForm > form > input[type="submit"]{
     width: 100%;
-    height: 4vh;
+    height: 35px;
     border: none;
     border-radius: 3vh;
     margin-top: 5%;
@@ -403,9 +404,9 @@ header input[type="submit"]{
 
 
 .perfilFt{
-    width: 15vw;
-    height: 15vw;
-    border-radius: 15vw;
+    width: 20vw;
+    height: 20vw;
+    border-radius: 20vw;
     border: #029b68 1px solid;
     margin-bottom: 10%;
 }
@@ -415,29 +416,30 @@ header input[type="submit"]{
     border: solid 2px #029b68;
     border-radius: 10px;
     padding-top: 2%;
-    width: 40%;
-    min-height: 20vw;
+    margin-top: 10%;
+    width: 70%;
+    min-height: 300px;
     display: inline-block;
 }
 
 .divPerfil input[type="text"]{
     margin-bottom: 5%;
-    height: 4vh;
+    height: 30px;
     border-radius: 3vh;
     border: 1px #029b68 solid;
     background-color: transparent;
     color: rgb(0, 0, 0, 0.5);
-    width: 50%;
+    width: 90%;
     text-align: center;
 }
 
 .divPerfil input[type="text"]:focus{
-    border: #029b68 5px solid;
+    border: #029b68 3px solid;
 }
 
 .divPerfil input[type="submit"]:not(.nop){
-    width: 50%;
-    height: 4vh;
+    width: 70%;
+    height: 30px;
     border: none;
     border-radius: 3vh;
     cursor: pointer;
@@ -450,8 +452,9 @@ header input[type="submit"]{
 
 .divPerfil input[name="apagar"], .divPerfil button[name="deslogar"]{
     min-width: 20%;
-    height: 2vw;
+    height: 30px;
     margin-bottom: 3%;
+    padding: 2px;
     border: none;
     cursor: pointer;
 }
@@ -471,8 +474,8 @@ header input[type="submit"]{
 #ft{
     position: absolute;
     border-radius: 50%;
-    width: 15vw;
-    height: 15vw;
+    width: 20vw;
+    height: 20vw;
     opacity: 0;
     cursor: pointer;
 }

@@ -282,20 +282,19 @@ app.post("/update", upload.single('ft'), function(req, res){
 
 app.get("/cadmob", function(req, res){
     var token = req.query.token;
-    if(token === undefined){
+    if(token === undefined || token === "undefined" || token === ""){
         res.render("cad-log.ejs", {"nome": nome, "email": email, "senha": senha, "image": image, "token": token});
-    } else if(token === "e1aa28844ce0b036eb2a31htrgrrgroglmvbrçlgmǵma02cb2223c34048b2b48ac20480a253f82167aa3d31142cbb9932a09dd5248"){
-        res.render("cad-log.ejs", {"nome": "adm", "email": "adm@root.com", "senha": "root@root", "image": image, "token": token});
     } else {
+        console.log("Token: ", token)
         axios.get(`http://localhost:7000/usuarios/?token=${token}`).then(resp => {
             var dados = resp.data[0];
-            console.log("2: ", dados);
             if(dados != undefined){
-                res.render("cad-log.ejs", {"nome": dados.nome, "email": dados.email, "senha": dados.senha, "image": dados.image, "token": token});
-            } else {
                 res.render("cad-log.ejs", {"nome": nome, "email": email, "senha": senha, "image": image, "token": token});
+            } else {
+                res.send(`<html><head></head><body><script>alert("Você já esta logado");window.location.href="/?token=${req.body.token}"</script></body></html>`);
             }
-        })
+        });
+        
     }
 });
 
