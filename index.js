@@ -21,6 +21,12 @@ const axios = require("axios");
 
 var fs = require("fs");
 
+const mailchimp = require("@mailchimp/mailchimp_marketing")
+mailchimp.setConfig({ 
+    apiKey: "f2a6e77c562bb79315463f72f0f36b07-us10", 
+    server: "us10", 
+})
+
 app.set('view engine', 'ejs');
 
 app.use(express.static('public'));
@@ -104,6 +110,8 @@ app.post("/newUser", function(req, res){
     var nwemail = req.body.email;
     var nwsenha = req.body.senha;
     var nwimage = "ftPerfil.png";
+    listId = "2143e64eb1";
+    tag = "sustentavel"
 
     var token = require('crypto')
 		.randomBytes(50)
@@ -121,6 +129,27 @@ app.post("/newUser", function(req, res){
                 console.log(resp.data);
                 console.log("==========================================================================================================");
                 var token = resp.data.token;
+
+                const addListMember = async () => {
+                    try {
+                        const response = await  mailchimp.lists.addListMember(listId, {
+                            email_address: nwemail,
+                            status: 'subscribed',
+                            email_type: 'html',
+                            merge_fields: {
+                                FNAME: nwnome
+                            },
+                            tags: [tag]
+                        })
+                        //console.log(response)
+                    }
+                    catch (err) {
+                        console.log(err)
+                    }
+                }
+                addListMember();
+
+
                 res.redirect(`/?token=${token}`)
             }).catch(erro => {
                 console.log("Erro ao criar o cadastro de algum usuario", erro);
@@ -296,6 +325,33 @@ app.get("/cadmob", function(req, res){
         });
         
     }
+});
+
+
+
+
+//AUTOMAÇÃO DE ENVIO DE EMAIL
+
+app.post('/adm/createlist', async (req, res) => {
+    const { name, company, address, city, state, zip, country, from_name, from_email, subject, language } = req.body
+const footerContactInfo = { company, address1: address, city, state, zip, country }
+const campaignDefaults = { from_name, from_email, subject, language }
+async function createAudience() {
+        try {
+            const audience = await mailchimp.lists.createList({
+                name: name,
+                contact: footerContactInfo,
+                permission_reminder: "*|LIST:DESCRIPTION|*",
+                email_type_option: true,
+                campaign_defaults: campaignDefaults
+            })
+res.send(audience.id)
+        }
+        catch (err) {
+            res.status(400).send(err)
+        }
+    }
+createAudience()
 });
 
 

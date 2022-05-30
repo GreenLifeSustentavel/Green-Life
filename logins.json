@@ -42,6 +42,22 @@
       "image": "fd6855d35582d18cb327.png",
       "token": "e1aa28844ce0b036eb2a31fdea02cb2223c34048b2b48aaff1b098b35a6c20480a253f82167aa3d31142cbb9932a09dd5248",
       "id": 5
+    },
+    {
+      "nome": "Fabio",
+      "email": "fs7079939@gmail.com",
+      "senha": "senha",
+      "image": "ftPerfil.png",
+      "token": "356b261d43df4a3cec64eeffade04caf9370dd36c7eebf8959acc27a633544a0941f49e231d0cdbe0ad99e347135e281d78c",
+      "id": 6
+    },
+    {
+      "nome": "novo user",
+      "email": "seilaa191@gmail.com",
+      "senha": "seila",
+      "image": "ftPerfil.png",
+      "token": "eadb37ee120d261aa16aa28830f3ecdbcd53bb995b18dc0bc9d09d2304a6083d56e95ca4268fb17562fd980229681359e49f",
+      "id": 7
     }
   ]
 }

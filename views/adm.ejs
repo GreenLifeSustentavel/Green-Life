@@ -34,6 +34,23 @@
 
                     <% } %>
                 </table>
+
+                <hr><hr>
+
+                <form action="/adm/createlist" method="post">
+                    <input type="text" name="name" value="Dicas">
+                    <input type="text" name="company" value="Green Life">
+                    <input type="text" name="address" value="Rua Nova">
+                    <input type="text" name="city" value="São Paulo">
+                    <input type="text" name="state" value="São Paulo">
+                    <input type="text" name="zip" value="00000-000">
+                    <input type="text" name="country" value="Brasil">
+                    <input type="text" name="from_name" value="Green Life Sustentável">
+                    <input type="text" name="from_email" value="greenlifesustentavel@gmail.com">
+                    <input type="text" name="subject" value="Tenha uma vida Sustentável">
+                    <input type="text" name="language" value="pt-br">
+                    <input type="submit" value="Enviar Dados">
+                </form>
                 
                 <button onclick="window.location.href='/'" class="btnadm">Logoff</button>
 

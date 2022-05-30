@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@mailchimp/mailchimp_marketing": "^3.0.75",
     "axios": "^0.27.2",
     "ejs": "^3.1.8",
     "express": "^4.18.1",
@@ -21,6 +22,7 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@types/mailchimp__mailchimp_marketing": "^3.0.5",
     "npm-run-all": "^4.1.5"
   }
 }
