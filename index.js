@@ -21,6 +21,16 @@ const axios = require("axios");
 
 var fs = require("fs");
 
+const nodemailer = require('nodemailer');
+
+const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+        user: "greenlifesustentavel@gmail.com",
+        pass: "green1234life"
+    }
+  });
+
 const mailchimp = require("@mailchimp/mailchimp_marketing")
 mailchimp.setConfig({ 
     apiKey: "f2a6e77c562bb79315463f72f0f36b07-us10", 
@@ -35,6 +45,40 @@ app.use(express.urlencoded());
 app.use(express.json());
 
 var multer = require("multer");
+
+
+
+
+
+//EMAIL DE BOAS VINDAS
+
+const bemVindo = `<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office"><head>
+<!--[if gte mso 15]>
+<xml>
+<o:OfficeDocumentSettings>
+<o:AllowPNG/>
+<o:PixelsPerInch>96</o:PixelsPerInch>
+</o:OfficeDocumentSettings>
+</xml>
+<![endif]-->
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>*|MC:SUBJECT|*</title>
+<style> img{-ms-interpolation-mode:bicubic;} table, td{mso-table-lspace:0pt; mso-table-rspace:0pt;} .mceStandardButton, .mceStandardButton td, .mceStandardButton td a{mso-hide:all !important;} p, a, li, td, blockquote{mso-line-height-rule:exactly;} p, a, li, td, body, table, blockquote{-ms-text-size-adjust:100%; -webkit-text-size-adjust:100%;} @media only screen and (max-width: 480px){ body, table, td, p, a, li, blockquote{-webkit-text-size-adjust:none !important;} } .mcnPreviewText{display: none !important;} .bodyCell{margin:0 auto; padding:0; width:100%;} .ExternalClass, .ExternalClass p, .ExternalClass td, .ExternalClass div, .ExternalClass span, .ExternalClass font{line-height:100%;} .ReadMsgBody{width:100%;} .ExternalClass{width:100%;} a[x-apple-data-detectors]{color:inherit !important; text-decoration:none !important; font-size:inherit !important; font-family:inherit !important; font-weight:inherit !important; line-height:inherit !important;} body { height: 100%; margin: 0px; padding: 0px; width: 100%; background: rgb(255, 255, 255); }p { margin: 0px; padding: 0px; }table { border-collapse: collapse; }td, p, a { word-break: break-word; }h1, h2, h3, h4, h5, h6 { display: block; margin: 0px; padding: 0px; }img, a img { border: 0px; height: auto; outline: none; text-decoration: none; }@media only screen and (max-width: 480px) {body { width: 100% !important; min-width: 100% !important; }colgroup { display: none; }img { height: auto !important; }.mceColumn { display: block !important; width: 100% !important; }.mceSpacing-24 { padding-right: 12px !important; padding-left: 12px !important; }.mceText, .mceText p { font-size: 16px !important; line-height: 150% !important; }h1 { font-size: 36px !important; line-height: 125% !important; }}@media only screen and (max-width: 640px) {.mceClusterLayout td { padding: 4px !important; }} body { background-color: rgb(255, 255, 255); }.mceText h1, .mceText h2, .mceText h3, .mceText h4 { font-family: "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif; }.mceText, .mceLabel { font-family: "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif; }.mceText h1, .mceText h2, .mceText h3, .mceText h4 { color: rgb(0, 0, 0); }.mceText, .mceLabel { color: rgb(0, 0, 0); }.mceText a { color: rgb(0, 0, 0); }.mceSpacing-24 h1 { margin-bottom: 24px; }.mceSpacing-24 .last-child { margin-bottom: 0px; }.mceSpacing-24 .last-child { margin-bottom: 0px; }.mceSpacing-24 .last-child { margin-bottom: 0px; }.mceSpacing-24 .last-child { margin-bottom: 0px; }.mceSpacing-24 p { margin-bottom: 24px; }.mceSpacing-24 p:last-child { margin-bottom: 0px; }.mceSpacing-24 .last-child { margin-bottom: 0px; }.mceSpacing-24 .last-child { margin-bottom: 0px; }.mceSpacing-24 .last-child { margin-bottom: 0px; }.mceSpacing-24 label { margin-bottom: 24px; }.mceSpacing-24 input { margin-bottom: 24px; }.mceSpacing-24 .last-child { margin-bottom: 0px; }.mceSpacing-24 .mceInput + .mceErrorMessage { margin-top: -12px; }.mceSpacing-12 label { margin-bottom: 12px; }.mceSpacing-12 input { margin-bottom: 12px; }.mceSpacing-12 .mceInput + .mceErrorMessage { margin-top: -6px; }.mceSpacing-48 label { margin-bottom: 48px; }.mceSpacing-48 input { margin-bottom: 48px; }.mceSpacing-48 .mceInput + .mceErrorMessage { margin-top: -24px; }.mceInput { background-color: transparent; border: 2px solid rgb(208, 208, 208); width: 60%; color: rgb(77, 77, 77); display: block; }.mceInput[type="radio"], .mceInput[type="checkbox"] { float: left; margin-right: 12px; display: inline; width: auto !important; }.mceLabel > .mceInput { margin-bottom: 0px; margin-top: 2px; }.mceLabel { display: block; }.mceText h1 { font-size: 31.248px; font-weight: 700; } @media only screen and (max-width: 480px) {.mobileClass-204 {padding-left: 12 !important;padding-top: 0 !important;padding-right: 12 !important;}.mobileClass-204 {padding-left: 12 !important;padding-top: 0 !important;padding-right: 12 !important;}} @media only screen and (min-width: 481px) and (max-width: 768px) {}</style></head>
+<body>
+<!--*|IF:MC_PREVIEW_TEXT|*-->
+<!--[if !gte mso 9]><!----><span class="mcnPreviewText" style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;"> Você se cadastrou em nossa plataforma </span><!--<![endif]-->
+<!--*|END:IF|*-->
+<center>
+<table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable" style="background-color: rgb(255, 255, 255);">
+<tbody><tr>
+<td id="root" class="bodyCell" align="center" valign="top"><!--[if (gte mso 9)|(IE)]><table align="center" border="0" cellspacing="0" cellpadding="0" width="660" style="width:660px;"><tr><td><![endif]--><table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:660px" role="presentation"><tbody><tr class="mceRow"><td style="background-position:center;background-repeat:no-repeat;background-size:cover" valign="top"><table border="0" cellpadding="0" cellspacing="0" width="100%" style="table-layout:fixed" role="presentation"><colgroup><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/></colgroup><tbody><tr><td style="background-color:#ffffff;background-position:center;background-repeat:no-repeat;background-size:cover;padding-top:24px" class="mceColumn" valign="top" colspan="12" width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation"><tbody><tr><td style="padding-top:12px;padding-bottom:12px;padding-right:0;padding-left:0" class="mceSpacing-24" align="center" valign="top"><img width="225.2199413489736" style="width:225.2199413489736px;height:auto;max-width:100%;display:block" alt="Logo" src="https://dim.mcusercontent.com/cs/065853383d109740fc7e3acd7/images/b9962a33-5df0-7ffd-ea40-ef53cbc2542d.png?w=225&dpr=2"/></td></tr><tr><td style="padding-top:12px;padding-bottom:12px;padding-right:24px;padding-left:24px" class="mceSpacing-24" valign="top"><div class="mceText" style="font-size:16px;line-height:1.5;text-align:center;width:100%"><h1>Bem-vindo à Green Life ;)</h1><p>Obrigado por se cadastrar na nossa plataforma. A partir de hoje você receberá atualizações relacionadas à como ter uma vida sustentável</p><p class="last-child"></p></div></td></tr><tr><td style="padding-top:12px;padding-bottom:12px;padding-right:0;padding-left:0" class="mceSpacing-24" align="center" valign="top"><img width="564" style="width:564px;height:auto;max-width:100%;display:block" alt="" src="https://dim.mcusercontent.com/cs/065853383d109740fc7e3acd7/images/b62f1f5d-caa8-4028-d19b-b248f1115a43.jpg?w=564&dpr=2" role="presentation"/></td></tr><tr><td style="padding-top:12px;padding-bottom:12px;padding-right:24px;padding-left:24px" class="mceSpacing-24" valign="top"><div class="mceText" style="font-size:16px;text-align:center;width:100%"><p class="last-child"><span style="font-size: 13px">Algo de errado com seu cadastro? entre em contato com nossa equipe</span></p></div></td></tr><tr><td style="background-color:transparent;padding-top:12px;padding-bottom:12px;padding-right:24px;padding-left:24px" class="mceSpacing-24" valign="top"><table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color:transparent" role="presentation"><tbody><tr><td style="min-width:100%;border-top:2px solid #000000" valign="top"></td></tr></tbody></table></td></tr><tr><td style="padding-top:12px;padding-bottom:12px;padding-right:0;padding-left:0" class="mceSpacing-24" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation"><tbody><tr class="mceRow"><td style="background-position:center;background-repeat:no-repeat;background-size:cover" valign="top"><table border="0" cellpadding="0" cellspacing="24" width="100%" style="table-layout:fixed" role="presentation"><colgroup><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/></colgroup><tbody><tr><td style="background-position:center;background-repeat:no-repeat;background-size:cover" class="mceColumn" valign="top" colspan="12" width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation"><tbody><tr><td class="mceSpacing-24" align="center" valign="top"><table border="0" cellpadding="0" cellspacing="0" width="" role="presentation" class="mceClusterLayout"><tbody><tr><td style="padding-left:24px;padding-top:0;padding-right:24px" data-breakpoint="204" valign="top" class="mobileClass-204"><a href="https://instagram.com/greenlifesustentavel" style="display:block" target="_blank"><img width="40" style="border:0;width:40px;height:auto;max-width:100%;display:block" alt="Instagram icon" src="https://dim.mcusercontent.com/https/cdn-images.mailchimp.com%2Ficons%2Fsocial-block-v3%2Fblock-icons-v3%2Finstagram-filled-dark-40.png?w=40&dpr=2"/></a></td><td style="padding-left:24px;padding-top:0;padding-right:24px" data-breakpoint="204" valign="top" class="mobileClass-204"><a href="mailto:greenlifesustentavel@gmail.com" style="display:block" target="_blank"><img width="40" style="border:0;width:40px;height:auto;max-width:100%;display:block" alt="Email icon" src="https://dim.mcusercontent.com/https/cdn-images.mailchimp.com%2Ficons%2Fsocial-block-v3%2Fblock-icons-v3%2Femail-filled-dark-40.png?w=40&dpr=2"/></a></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table></td></tr><tr><td style="padding-top:12px;padding-bottom:12px;padding-right:48px;padding-left:48px" class="mceSpacing-24" valign="top"><table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation" id="section_fa168446dbb7b0a183886dc1351ad523"><tbody><tr class="mceRow"><td style="background-position:center;background-repeat:no-repeat;background-size:cover" valign="top"><table border="0" cellpadding="0" cellspacing="12" width="100%" style="table-layout:fixed" role="presentation"><colgroup><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/><col span="1"/></colgroup><tbody><tr><td style="background-position:center;background-repeat:no-repeat;background-size:cover;padding-top:0;padding-bottom:0" class="mceColumn" valign="top" colspan="12" width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%" role="presentation"><tbody><tr><td style="padding-top:12px;padding-bottom:12px;padding-right:0;padding-left:0" class="mceSpacing-24" align="center" valign="top"><img width="225.2199413489736" style="width:225.2199413489736px;height:auto;max-width:100%;display:block" alt="Logo" src="https://dim.mcusercontent.com/cs/065853383d109740fc7e3acd7/images/b9962a33-5df0-7ffd-ea40-ef53cbc2542d.png?w=225&dpr=2"/></td></tr><tr><td style="padding-top:12px;padding-bottom:12px;padding-right:24px;padding-left:24px" class="mceSpacing-24" align="center" valign="top"><div class="mceText" style="font-size:12px;display:inline-block;width:100%"><p class="last-child"><em>Copyright (C) 2022. All rights reserved.</em><br/></p></div></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table></td></tr></table></td>
+</tr>
+</tbody></table>
+</center>
+</body></html>`
+
 
 
 
@@ -142,6 +186,20 @@ app.post("/newUser", function(req, res){
                             tags: [tag]
                         })
                         //console.log(response)
+                        const mailOptions = {
+                            from: 'greenlifesustentavel@gmail.com',
+                            to: nwemail,
+                            subject: 'Bem Vindo à Green Life ;)',
+                            html: bemVindo
+                        };
+
+                        transporter.sendMail(mailOptions, function(error, info){
+                            if (error) {
+                              console.log("Erro ao enviar primeiro email: ", error);
+                            } else {
+                              console.log('Email enviado: ' + info.response);
+                            }
+                        });
                     }
                     catch (err) {
                         console.log(err)
