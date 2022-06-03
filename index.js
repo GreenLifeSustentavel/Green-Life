@@ -27,13 +27,13 @@ const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
         user: "greenlifesustentavel@gmail.com",
-        pass: "green1234life"
+        pass: "Senha do Email"
     }
   });
 
 const mailchimp = require("@mailchimp/mailchimp_marketing")
 mailchimp.setConfig({ 
-    apiKey: "f2a6e77c562bb79315463f72f0f36b07-us10", 
+    apiKey: "tokenDoMailchimp-us10", 
     server: "us10", 
 })
 

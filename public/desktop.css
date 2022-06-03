@@ -24,6 +24,7 @@ footer{
     background-color: var(--back)/*#66cdaa*/;
     width: 100%;
     min-height: 20vw;
+    padding-bottom: 5%;
 }
 
 h1{
@@ -232,7 +233,7 @@ header input[type="submit"]{
     transition: .2s ease-out;
 }
 
-.ctr:not(.exc){
+.ctr:not(.exc):not(.icones_emp){
     display: flex;
     width: 100%;
     text-align: left;
@@ -246,7 +247,7 @@ header input[type="submit"]{
     border-right: #029b68 1px solid;
 }
 
-.ctr img:not(.exc){
+.ctr img:not(.exc):not(.icones_emp){
     width: 40%;
     float: right;
     border-radius: 5vw;
@@ -436,7 +437,7 @@ header input[type="submit"]{
     border-radius: 3vh;
     border: 1px #029b68 solid;
     background-color: transparent;
-    color: rgb(0, 0, 0, 0.5);
+    color: rgb(0, 0, 0, 0.8);
     width: 50%;
     text-align: center;
 }
@@ -464,6 +465,7 @@ header input[type="submit"]{
     margin-bottom: 3%;
     border: none;
     cursor: pointer;
+    border-radius: 3vh;
 }
 
 .divPerfil input[name="apagar"]:hover{
@@ -492,6 +494,46 @@ hr{
 }
 
 /*carrossel*/
+
+.js-carousel--simple{
+    width: 60%; 
+    margin-top: 2%; 
+    border: rgba(2, 155, 104, 0.2) 1px solid; 
+    border-radius: 10%; 
+    margin-bottom: 2%;
+}
+
+.glider-slide{
+    min-width: 100% !important;
+    cursor: pointer;
+}
+
+.glider-track{
+    width: 100% !important;
+}
+
+.js-carousel--simple-prev{
+    width: 3%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.js-carousel--simple-prev.disabled{
+    display: none;
+}
+
+.js-carousel--simple-next.disabled{
+    display: none;
+}
+
+.js-carousel--simple-next{
+    width: 3%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
 .logos{
     display: -webkit-box;
     display: -ms-flexbox;
@@ -600,4 +642,30 @@ h3{
 
 .cadmob{
     display: none;
+}
+
+.no-list{
+    list-style-type: none;
+}
+
+.icones_emp{
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+}
+
+.fale{
+    font-size: 2vw;
+}
+
+.fale a{
+    color: white;
+}
+
+.fale span:not(:first-child){
+    margin: 0 5%;
+}
+
+#form input[type="text"], #form input[type="password"], #form input[type="email"], #form2 input[type="text"], #form2 input[type="password"], #form2 input[type="email"] {
+    padding-left: 1vh;
 }

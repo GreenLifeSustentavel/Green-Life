@@ -6,7 +6,22 @@
         <main id="main">
             <div id="principal" class="blc cent">
 
-                <img class="banner" src="/img/slide1.jpg" alt="[imagem]index">
+                <!-- <img class="banner" src="/img/slide1.jpg" alt="[imagem]index"> -->
+
+                <div class="js-carousel--simple">
+                    <img class="banner" src="/img/slide1.jpg" onclick="window.location.href='/vidaSustentavel?token=<%=token%>'" alt="[imagem]index">
+                    <img class="banner" src="/img/slide2.jpg" onclick="window.location.href='/impactos?token=<%=token%>'" alt="[imagem]index">
+                    <img class="banner" src="/img/slide3.jpg" onclick="window.location.href='/sustentabilidade?token=<%=token%>'" alt="[imagem]index">
+                    <img class="banner" src="/img/slide4.jpg" onclick="window.location.href='/ds?token=<%=token%>'" alt="[imagem]index">
+                    <img class="banner" src="/img/slide5.jpg" onclick="window.location.href='/TIverde?token=<%=token%>'" alt="[imagem]index">
+                  </div>
+                 
+                  <button class="js-carousel--simple-prev"> <img src="/img/setaEsq.png" alt="«"> </button>
+                  <!-- <a href="https://www.flaticon.com/br/icones-gratis/seta" title="seta ícones">Seta ícones criados por Iconpro86 - Flaticon</a> -->
+                  <button class="js-carousel--simple-next"> <img src="/img/setaDir.png" alt="»"> </button>
+                  <!-- <a href="https://www.flaticon.com/br/icones-gratis/seta" title="seta ícones">Seta ícones criados por Iconpro86 - Flaticon</a> --> </button>
+                  <div class="js-carousel--simple-dots"></div>
+                </article>
                 
             </div>
 
@@ -34,10 +49,33 @@
                     <span><a href="/qs?token=<%=token%>#mis">Missão</a></span>
                     <span><a href="/qs?token=<%=token%>#vis">Visão</a></span>
                     <span><a href="/qs?token=<%=token%>#val">Valores</a></span>
+                </label> <br><br>
+                <label class="fale">
+                    <span> Fale Conosco: </span>
+                    <br><br>
+                    <span><a href="https://www.instagram.com/greenlifesustentavel">Instagram</a></span>
+                    <span><a href="https://mailto:greenlifesustentavel@gmail.com">Email</a></span>
+                    <span><a href="tel:(380)946917200">Telefone</a></span>
+                    <span><a href="https://wa.me/+380946917200">Whatsapp</a></span>
                 </label>
             </label>
         </footer>
         
+        <script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
+
+        <script>
+            var $simpleCarousel = document.querySelector(".js-carousel--simple");
+
+            new Glider($simpleCarousel, {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                dots: ".js-carousel--simple-dots",
+                arrows: {
+                    prev: ".js-carousel--simple-prev",
+                    next: ".js-carousel--simple-next",
+                },
+            });
+        </script>
 
         <%- include("./scripts.ejs"); %>
 

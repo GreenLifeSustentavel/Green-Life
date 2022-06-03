@@ -433,7 +433,7 @@ header input[type="submit"]{
     border-radius: 3vh;
     border: 1px #029b68 solid;
     background-color: transparent;
-    color: rgb(0, 0, 0, 0.5);
+    color: rgb(0, 0, 0, 0.8);
     width: 90%;
     text-align: center;
 }
@@ -456,12 +456,13 @@ header input[type="submit"]{
 }
 
 .divPerfil input[name="apagar"], .divPerfil button[name="deslogar"]{
-    min-width: 20%;
+    width: 30%;
     height: 30px;
     margin-bottom: 3%;
     padding: 2px;
     border: none;
     cursor: pointer;
+    border-radius: 3vh;
 }
 
 .divPerfil input[name="apagar"]:hover{
@@ -490,6 +491,46 @@ hr{
 }
 
 /*carrossel*/
+
+.js-carousel--simple{
+    width: 100%; 
+    margin-top: 2%; 
+    border: rgba(2, 155, 104, 0.2) 1px solid; 
+    border-radius: 10%; 
+    margin-bottom: 2%;
+}
+
+.glider-slide{
+    min-width: 100% !important;
+    cursor: pointer;
+}
+
+.glider-track{
+    width: 100% !important;
+}
+
+.js-carousel--simple-prev{
+    width: 10%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.js-carousel--simple-next{
+    width: 10%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.js-carousel--simple-prev.disabled{
+    display: none;
+}
+
+.js-carousel--simple-next.disabled{
+    display: none;
+}
+
 .logos{
     display: -webkit-box;
     display: -ms-flexbox;
@@ -534,6 +575,7 @@ hr{
     border-bottom-left-radius: 70%;
     border-bottom-right-radius: 70%;
     margin-bottom: 5%;
+    margin-top: 35%;
 }
 
 footer > label{
@@ -610,4 +652,20 @@ h3{
 
 .mob{
     display: none;
+}
+
+.fale{
+    font-size: 5vw;
+}
+
+.fale a{
+    color: white;
+}
+
+.fale span:not(:first-child){
+    margin: 0 5%;
+}
+
+#form input[type="text"], #form input[type="password"], #form input[type="email"], #form2 input[type="text"], #form2 input[type="password"], #form2 input[type="email"] {
+    padding-left: 1vh;
 }
